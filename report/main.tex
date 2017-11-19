@@ -1,0 +1,143 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[style=listgroup,acronym,toc,hyperfirst,xindy]{glossaries}
+\makeglossaries
+\usepackage[xindy]{imakeidx}
+\makeindex
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+\setglossarystyle{long}
+
+\newacronymstyle{ex-footnote}%
+{%
+	\GlsUseAcrEntryDispStyle{footnote}%
+}%
+{%
+	\GlsUseAcrStyleDefs{footnote}%
+	\renewcommand*{\genacrfullformat}[2]{%
+		\firstacronymfont{\glsentryshort{##1}}##2%
+		\expandafter\footnote\expandafter{\expandafter\glsentrylong\expandafter{##1}}%
+	}%
+	\renewcommand*{\Genacrfullformat}[2]{%
+		\firstacronymfont{\Glsentryshort{##1}}##2%
+		\expandafter\footnote\expandafter{\expandafter\glsentrylong\expandafter{##1}}%
+	}%
+	\renewcommand*{\genplacrfullformat}[2]{%
+		\firstacronymfont{\glsentryshortpl{##1}}##2%
+		\expandafter\footnote\expandafter{\expandafter\glsentrylongpl\expandafter{##1}}%
+	}%
+	\renewcommand*{\Genplacrfullformat}[2]{%
+		\firstacronymfont{\Glsentryshortpl{##1}}##2%
+		\expandafter\footnote\expandafter{\expandafter\glsentrylongpl\expandafter{##1}}%
+	}%
+}
+
+\setacronymstyle{ex-footnote}
+
+
+
+%Glossary
+\newglossaryentry{vhfg}
+{
+	name=VFH,
+	description={Banda del espectro electromagnético que ocupa el rango de frecuencias de 30 MHz a 300 MHz}
+}
+\newglossaryentry{uhfg}
+{
+	name=UFH,
+	description={Banda del espectro electromagnético que ocupa el rango de frecuencias de 300 MHz a 3 GHz}
+}
+
+% Acronym list
+\newacronym{oscar}{OSCAR}{Orbiting Satellite Carrying Amateur Radio}
+\newacronym[see={[Glossary:]{vhfg}}]{vhf}{VHF}{Very High Frequency}
+\newacronym[see={[Glossary:]{uhfg}}]{uhf}{UHF}{Ultra High Frequency}
+
+
+\title{Diseño de una antena helicoidal \\para radioenlace satelital en UHF}								% Title
+\author{Alberto Mur López \\ Diego Cajal Orleans}								% Author
+\date{\today}											% Date
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\theauthor}
+\lhead{\thetitle}
+\cfoot{\thepage}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+    \includegraphics[scale = 0.75]{eina.png}\\[1.0 cm]	% University Logo
+%    \textsc{\LARGE University of Cape Town}\\[2.0 cm]	% University Name
+	\textsc{\Large 30340}\\[0.5 cm]				% Course Code
+	\textsc{\large equipos y sistemas de transmisión}\\[0.5 cm]				% Course Name
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	\setlength{\baselineskip}{2\baselineskip}
+	{ \huge \bfseries \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+	
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{Autores:}\\
+			\theauthor
+			\end{flushleft}
+			\end{minipage}~
+			\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+			\emph{Nia:} \\
+			565825 \\
+			658212
+												% Your Student Number
+		\end{flushright}
+	\end{minipage}\\[2 cm]
+	
+	{\large \thedate}\\[2 cm]
+ 
+	\vfill
+	
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introducción}
+En este trabajo se va a detallar el diseño de una antena helicoidal para realizar un enlace satelital. Los satélites objetivo son satélites de radio amateur, designados habitualmente como \gls{oscar} que operan en la banda de \gls{uhf} y \gls{vhf}. \\
+El alcance de este trabajo se centrará únicammente en diseñar la antena para la banda \gls{uhf}. Concretamente la frecuencia central de nuestra antena estará en torno a los 435 MHz.
+
+
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{biblist}
+\newpage
+
+\printglossary[type=\acronymtype]
+
+\newpage
+\printglossary[type=main]
+
+\end{document}
