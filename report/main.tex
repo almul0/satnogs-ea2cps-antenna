@@ -177,15 +177,43 @@ lo mismo que para una línea de transmisión cargada con su impedancia caracter�
 La velocidad de fase de la onda en la hélice es tal que hace que la componente del campo eléctrico en cada vuelta se sume aproximadamente en fase en la dirección del eje. La tendencia a que esto ocurra es lo suficientemente fuerte para que la velocidad de fase se ajuste por si misma para producir este resultado. Este ajuste natural es el que hace que el modo axial tenga su persistencia característica.\\\\
 La velocidad de fase es aproximadamente igual a la velocidad de la luz en el vacío cuando la frecuencia es muy baja para el modo de radiación axial. Si se aumenta la frecuencia, aparece un rango frecuencial en el que la velocidad de fase es menor. En este rango es en el que radia en  dirección axial.
 
+\subsection{Factor de agrupación}
+Como aproximación, se asume que en modo axial se tiene una única onda viajera saliente en el conductor. El diagrama de la hélice es calculado como una agrupación de vueltas individuales, todas con el mismo diagrama de radiación. Cuando la antena es lo suficientemente larga ($nS$ grande), el factor de agrupación se vuelve dominante y determina casi por completo la forma del diagrama. Así, aunque las componentes de polarización vertical y horizontal de cada vuelta son muy diferentes, las componentes de la hélice completa son prácticamente iguales.\\\\
+Para calcular el factor de agrupación, la hélice de $n$ vueltas se remplaza por $n$ fuentes puntuales isotrópicas.
 
+\begin{equation}
+	FA(\psi)=\frac{\sin\frac{n\psi}{2}}{\sin\frac{\psi}{2}}
+\end{equation} 
 
-%La realización más simple de la antena helicoidal axial es la unifilar. Consiste simplemente en un único conductor roscado desde un plano de tierra. Esta antena produce una radiación con polarización circular en el sentido de la rosca de la hélice y mantiene una impedancia de entrada constante para un ancho de banda apreciable.\\
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.60\textwidth]{helical_balanis.png}
-%	\caption{Hélice comercial con un plano de tierra ahuecado}
-%	\label{fig:helical_balanis}
-%\end{figure}
+La fase con la que la onda radiada por la \textit{fuente 1} llega a un punto arbitrario $P$ está adelantada a la fase de la onda proveniente de la \textit{fuente 2} por $2\pi S_{\lambda}\cos\theta$, pero retardada por $2\pi L_{\lambda}/p$, donde $p$ es el factor de velocidad de fase ($p=v/c$). Este retardo es proporcional al tiempo requerido para que la onda viaje a lo largo de una vuelta, de la fuente 2 a la 1. El valor del ángulo eléctrico $\psi$ es la diferencia.
+
+\begin{equation}
+	\psi=2\pi(S_{\lambda}\cos\theta-\frac{L_{\lambda}}{p})
+\end{equation} 
+
+Las ondas llegan a $P$ en fase cuando $\psi=-2\pi m$ y $\theta=0$, donde $m$ es un entero $(0,1,2,...)$. Se puede extraer la siguiente condición:
+
+\begin{equation}
+	\frac{L_{\lambda}}{p}=m+S_{\lambda}
+\end{equation} 
+
+La expresión (3) se relaciona de forma directa con los modos de transmisión comentados en la sección 2.1, ya que es una relación aproximada para que por el conductor existan los diferentes modos $T_{m}$. Así, para el modo $T_{1}$, que es el que produce radiación axial, tenemos:
+
+\begin{equation}
+	\frac{L_{\lambda}}{p}=1+S_{\lambda}\longrightarrow\frac{L}{p}=\lambda+S
+\end{equation} 
+
+Introduciendo la relación $L²=S²+(\pi D)²$, se obtiene una interrelación entre los parámetros de espaciado ($S$) y diámetro ($D$) para que la antena radie en modo axial.\\
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{diametro_espaciado.png}
+	\caption{Diámetro vs espaciado}
+	\label{fig:diam_vs_spacing}
+\end{figure}
+
+La factor de velocidad de fase debe estar entre $p=1$ y $p=0,7$ 
+
 
 \newpage
 \bibliographystyle{plain}
