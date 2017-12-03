@@ -61,8 +61,6 @@
 
 % Acronym list
 \newacronym{oscar}{OSCAR}{Orbiting Satellite Carrying Amateur Radio}
-\newacronym[see={[Glossary:]{vhfg}}]{vhf}{VHF}{Very High Frequency}
-\newacronym[see={[Glossary:]{uhfg}}]{uhf}{UHF}{Ultra High Frequency}
 \newacronym{satnogs}{SatNOGS}{Satellite Networked Operation Ground Stations}
 
 
@@ -127,21 +125,67 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introducción}
-Desde su descubrimiento casi accidental, la antena helicoidal operando en modo axial es una de las antenas más usadas para \gls{uhf} y comunicaciones de microondas. Con el incremento de los servicios basados en satélite se hizo necesario recibir y transmitir un haz estrecho de radiación circularmente polarizada, minimizando la radiación no deseada.\\\\
-En el presente documento se va a detallar el diseño de una antena helicoidal en modo axial para realizar un enlace satelital. Su frecuencia central estará en torno a los 435 MHz (UHF). Los satélites objetivo son satélites de radio amateur, designados habitualmente como \gls{oscar}, que operan en la banda de UHF y \gls{vhf}. La motivación de este proyecto viene de la necesidad de construir un seguidor de satélites basado en el proyecto \gls{satnogs}.\\\\
-Para la realización de este trabajo se emplearan las herramientas Matlab y 4nec2 para la simulación mediante el método de momentos de la radiación de nuestra antena.
+Desde su descubrimiento casi accidental, la antena helicoidal operando en modo axial es una de las antenas más usadas para UHF y comunicaciones de microondas. El término axial hace referencia a la tendencia de la antena a radiar en la dirección de su extremo (axialmente), en lugar de lateralmente, cuando su radio es del orden de una longitud de onda.\\\\
+El modo axial radia con polarización circular de forma predominante. En comunicaciones espaciales, así como en comunicaciones móviles terrestres, la orientación relativa entre la transmisión y recepción con polarización lineal no está garantizada, por lo que es necesario utilizar este tipo de polarización. Además, para aplicaciones espaciales, la rotación de Faraday a través de la ionosfera es, generalmente, impredecible (el plasma magnetizado en la ionosfera rota la dirección de la polarización lineal, pero no tiene efecto sobre la polarización circular). Por estas razones, es común que las antenas polarizadas linealmente experimenten desvanecimientos profundos, haciendo las comunicaciones poco fiables.\\\\
+En el presente documento se va a detallar el diseño de una antena helicoidal para realizar un enlace satelital. Su frecuencia central estará en torno a los 435 MHz (UHF) y trabajará en modo axial. Los satélites objetivo son satélites de radio amateur, designados habitualmente como \gls{oscar}, que operan en la banda de UHF y VHF. La motivación de este proyecto viene de la necesidad de construir un seguidor de satélites basado en el proyecto \gls{satnogs}.\\\\
+Para la realización de este trabajo se emplearán las herramientas Matlab y 4nec2.
 
 \newpage
 \section{Fundamentos teóricos}
-La antena helicoidal en modo axial proporciona un alto rendimiento y resistencia tanto en el espacio como en la tierra. El término "axial" hace referencia a la tendencia de la antena a radiar en la dirección de su extremo (axialmente), en lugar de lateralmente, cuando su radio es del orden de una longitud de onda. Además, el modo axial radia con polarización circular de forma predominante. La polarización circular es importante en las comunicaciones espaciales así como en las comunicaciones móviles terrestres. Esto es debido a que la orientación relativa entre la transmisión y recepción con polarización lineal no está garantizada. Además, para aplicaciones espaciales, el efecto Faraday a través de la ionosfera es, generalmente, impredecible. (El plasma magnetizado en la ionosfera rota la dirección de la polarizaci lineal, pero no tiene efecto sobre la polarización circular.) Por estas razones, es común que las antenas polarizadas linealmente experimenten desvanecimientos profundos debido a estos efectos, haciendo las comunicaciones poco fiables. 
+Es interesante ver la estructura geométrica de una antena helicoidal no como un tipo básico de antena, sino como una particularización de un caso general. Una hélice de un diámetro fijo colapsa en una espira si el espacio entre sus vueltas se aproxima a cero. Como caso opuesto, si se fija el espacio entre sus vueltas, colapsa en un conductor rectilíneo cuando se reduce su diámetro.
 
-La realización más simple de la antena helicoidal axial es la unifilar. Consiste simpemente en un único conductor roscado desde un plano de tierra (Figura \ref{fig:helical_balanis}). Esta antena produce una radiación con polarización circular en el sentido de la rosca de la hélice y mantiene un impedancia de entrada constante para un ancho de banda apreciable.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.60\textwidth]{helical_balanis.png}
-	\caption{Hélice comercial con un plano de tierra ahuecado}
-	\label{fig:helical_balanis}
+	\includegraphics[width=0.40\textwidth]{parametros.png}
+	\caption{Relación de dimensiones de la hélice}
+	\label{fig:param}
 \end{figure}
+
+Normalmente, cuando se hable de dimensiones de la antena se hará en función de longitudes de onda (dimensiones eléctricas).
+
+\subsection{Modos de transmisión y radiación de las hélices}
+El campo electromagnético alrededor de la hélice puede ser tratado desde dos puntos de vista: como campo guiado y como campo radiado. Desde el primer punto de vista se asume que la onda electromagnética se propaga sin atenuación a lo largo de una hélice infinita, del mismo modo que lo haría por una linea de transmisión infinita. Esta propagación se puede describir por su \textit{modo de transmisión}. Por otro lado, el punto de vista del campo radiado se describe mediante el diagrama de radiación de la antena. Aunque son posibles una infinita variedad de diagramas, dos tipos son de particular interés dependiendo de la dirección del máximo de propagación: el modo de radiación normal y el modo de radiación axial.\\\\
+El modo de transmisión de menor orden en un conductor helicoidal es el modo $T_{0}$. En él las regiones de carga positiva y negativa están separadas por varias vueltas. Es el modo de transmisión predominante cuando la longitud de una vuelta es mucho menor que la longitud de onda ($L<<\lambda$), común en inductores de baja frecuencia. Como las regiones adyacentes de carga están separadas por una distancia axial apreciable, aparece una componente axial de campo eléctrico. Esta componente interactúa con la onda viajera a lo largo de la hélice, dando lugar a campos radiados en la dirección normal. El caso más interesante asociado a este modo de transmisión se da cuando la longitud total de la antena es mucho menor que la longitud de onda ($nL<<\lambda$, siendo $n$ el número total de vueltas). En estas condiciones se puede asumir que las corrientes en la hélice tienen una magnitud y fase uniformes a lo largo de la estructura. De forma teórica, esta condición puede ser aproximada a una pequeña hélice cargada en su extremo en la que se produce una onda estacionaria. La impedancia de la antena se vuelve dependiente de la frecuencia y la eficiencia de radiación es pequeña. Esta combinación de antena pequeña con el modo de transmisión $T_{0}$ da lugar a antenas helicoidales con modo de radiación normal. La antena a diseñar requiere un modo de radiación axial, que no puede ser conseguido con dicho modo de transmisión.\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.3\textwidth]{modos.png}
+	\caption{Distribución de las cargas para diferentes modos de transmisión}
+	\label{fig:modes}
+\end{figure}
+
+El modo de transmisión de primer orden, designado como $T_{1}$, tiene las regiones de cargas positivas y negativas separadas aproximadamente por media vuelta de hélice, haciendo que queden diametralmente opuestas. Es el modo predominante cuando la longitud de una vuelta es del orden de una longitud de onda ($L\sim\lambda$). La radiación de este tipo de helices cuando $n>1$ tiene el máximo en la dirección de la hélice y está polarizada circularmente. Este tipo de radiación es el que se conoce como modo axial y es el que se quiere conseguir para la antena a diseñar. Una de las características más importantes de este modo de radiación es que se produce para un amplio rango de dimensiones de la hélice, haciendo que sea una de las antenas más fáciles de construir.\\\\
+Los modos de radiación normal y axial son en realidad casos particulares de diagramas de radiación de antenas helicoidales. En el caso general, el máximo de radiación no estará ni en $\theta=0$ ni en $\theta=90º$, sino en un valor intermedio.
+
+\subsection{Modo de radiación axial}
+Las distribuciones de corriente de una antena helicoidal funcionando en modo axial pueden describirse como una onda viajera saliente más una onda viajera entrante de mucha menos magnitud. Cada onda está caracterizada por una región inicial de fuerte atenuación seguida de otra en la que la corriente es relativamente constante.\\
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{ondas.png}
+	\caption{Distribuciónes de corriente idealizadas}
+	\label{fig:waves}
+\end{figure}
+
+La profunda atenuación de la onda reflejada (entrante) permite una distribución uniforme en la zona central en hélices largas. Ambas atenuaciones, tanto de la saliente como de la reflejada, explican la relativa estabilidad en impedancia de este tipo de antenas, ya que relativamente poca energía de la reflejada en el extremo llega a la entrada. Así, la SWR de corriente a la entrada es
+
+\begin{equation*}
+	SWR=\frac{I_{0}+I_{2}}{I_{0}-I_{2}}\approx 1
+\end{equation*}
+
+lo mismo que para una línea de transmisión cargada con su impedancia característica.\\\\
+La velocidad de fase de la onda en la hélice es tal que hace que la componente del campo eléctrico en cada vuelta se sume aproximadamente en fase en la dirección del eje. La tendencia a que esto ocurra es lo suficientemente fuerte para que la velocidad de fase se ajuste por si misma para producir este resultado. Este ajuste natural es el que hace que el modo axial tenga su persistencia característica.\\\\
+La velocidad de fase es aproximadamente igual a la velocidad de la luz en el vacío cuando la frecuencia es muy baja para el modo de radiación axial. Si se aumenta la frecuencia, aparece un rango frecuencial en el que la velocidad de fase es menor. En este rango es en el que radia en  dirección axial.
+
+
+
+%La realización más simple de la antena helicoidal axial es la unifilar. Consiste simplemente en un único conductor roscado desde un plano de tierra. Esta antena produce una radiación con polarización circular en el sentido de la rosca de la hélice y mantiene una impedancia de entrada constante para un ancho de banda apreciable.\\
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.60\textwidth]{helical_balanis.png}
+%	\caption{Hélice comercial con un plano de tierra ahuecado}
+%	\label{fig:helical_balanis}
+%\end{figure}
 
 \newpage
 \bibliographystyle{plain}
