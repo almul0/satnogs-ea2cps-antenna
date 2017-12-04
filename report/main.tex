@@ -1,15 +1,8 @@
 \documentclass[12pt]{article}
 \usepackage[spanish]{babel}
-\usepackage{natbib}
-\usepackage{url}
 \usepackage[utf8x]{inputenc}
-\usepackage{amsmath}
-\usepackage{hyperref}
 \usepackage[style=listgroup,acronym,toc,hyperfirst,xindy]{glossaries}
-\makeglossaries
-\usepackage[xindy]{imakeidx}
 \makeindex
-\usepackage{wrapfig}
 \usepackage{graphicx}
 \graphicspath{{images/}}
 \usepackage{parskip}
@@ -19,6 +12,7 @@
 
 \setglossarystyle{long}
 
+% Acronym style
 \newacronymstyle{ex-footnote}%
 {%
 	\GlsUseAcrEntryDispStyle{footnote}%
@@ -46,27 +40,16 @@
 \setacronymstyle{ex-footnote}
 
 
-
-%Glossary
-\newglossaryentry{vhfg}
-{
-	name=VFH,
-	description={Banda del espectro electromagnético que ocupa el rango de frecuencias de 30 MHz a 300 MHz}
-}
-\newglossaryentry{uhfg}
-{
-	name=UFH,
-	description={Banda del espectro electromagnético que ocupa el rango de frecuencias de 300 MHz a 3 GHz}
-}
-
 % Acronym list
 \newacronym{oscar}{OSCAR}{Orbiting Satellite Carrying Amateur Radio}
 \newacronym{satnogs}{SatNOGS}{Satellite Networked Operation Ground Stations}
 
-
-\title{Diseño de una antena helicoidal \\para radioenlace satelital en UHF}								% Title
-\author{Alberto Mur López \\ Diego Cajal Orleans}								% Author
-\date{\today}											% Date
+% Title
+\title{Diseño de una antena helicoidal \\para radioenlace satelital en UHF}			
+% Author
+\author{Alberto Mur López \\ Diego Cajal Orleans}								
+% Date
+\date{\today}										
 
 \makeatletter
 \let\thetitle\@title
@@ -145,7 +128,7 @@ Normalmente, cuando se hable de dimensiones de la antena se hará en función de
 
 \subsection{Modos de transmisión y radiación de las hélices}
 El campo electromagnético alrededor de la hélice puede ser tratado desde dos puntos de vista: como campo guiado y como campo radiado. Desde el primer punto de vista se asume que la onda electromagnética se propaga sin atenuación a lo largo de una hélice infinita, del mismo modo que lo haría por una linea de transmisión infinita. Esta propagación se puede describir por su \textit{modo de transmisión}. Por otro lado, el punto de vista del campo radiado se describe mediante el diagrama de radiación de la antena. Aunque son posibles una infinita variedad de diagramas, dos tipos son de particular interés dependiendo de la dirección del máximo de propagación: el modo de radiación normal y el modo de radiación axial.\\\\
-El modo de transmisión de menor orden en un conductor helicoidal es el modo $T_{0}$. En él las regiones de carga positiva y negativa están separadas por varias vueltas. Es el modo de transmisión predominante cuando la longitud de una vuelta es mucho menor que la longitud de onda ($L<<\lambda$), común en inductores de baja frecuencia. Como las regiones adyacentes de carga están separadas por una distancia axial apreciable, aparece una componente axial de campo eléctrico. Esta componente interactúa con la onda viajera a lo largo de la hélice, dando lugar a campos radiados en la dirección normal. El caso más interesante asociado a este modo de transmisión se da cuando la longitud total de la antena es mucho menor que la longitud de onda ($nL<<\lambda$, siendo $n$ el número total de vueltas). En estas condiciones se puede asumir que las corrientes en la hélice tienen una magnitud y fase uniformes a lo largo de la estructura. De forma teórica, esta condición puede ser aproximada a una pequeña hélice cargada en su extremo en la que se produce una onda estacionaria. La impedancia de la antena se vuelve dependiente de la frecuencia y la eficiencia de radiación es pequeña. Esta combinación de antena pequeña con el modo de transmisión $T_{0}$ da lugar a antenas helicoidales con modo de radiación normal. La antena a diseñar requiere un modo de radiación axial, que no puede ser conseguido con dicho modo de transmisión.\\
+El modo de transmisión de menor orden en un conductor helicoidal es el modo $T_{0}$. En él las regiones de carga positiva y negativa están separadas por varias vueltas. Es el modo de transmisión predominante cuando la longitud de una vuelta es mucho menor que la longitud de onda ($L<<\lambda$), común en inductores de baja frecuencia. Como las regiones adyacentes de carga están separadas por una distancia axial apreciable, aparece una componente axial de campo eléctrico. Esta componente interactúa con la onda viajera a lo largo de la hélice, dando lugar a campos radiados en la dirección normal. El caso más interesante asociado a este modo de transmisión se da cuando la longitud total de la antena es mucho menor que la longitud de onda ($nL<<\lambda$, siendo $n$ el número total de vueltas). En estas condiciones se puede asumir que las corrientes en la hélice tienen una magnitud y fase uniformes a lo largo de la estructura. De forma teórica, esta condición puede ser aproximada a una pequeña hélice cargada en su extremo en la que se produce una onda estacionaria. La impedancia de la antena se vuelve dependiente de la frecuencia y la eficiencia de radiación es pequeña. Esta combinación de antena pequeña con el modo de transmisión $T_{0}$ da lugar a antenas helicoidales con modo de radiación normal. La antena a diseñar requiere un modo de radiación axial, que no puede ser conseguido con este modo de transmisión.\\
 
 \begin{figure}[h]
 	\centering
@@ -197,7 +180,7 @@ Las ondas llegan a $P$ en fase cuando $\psi=-2\pi m$ y $\theta=0$, donde $m$ es 
 	\frac{L_{\lambda}}{p}=m+S_{\lambda}
 \end{equation} 
 
-La expresión (3) se relaciona de forma directa con los modos de transmisión comentados en la sección 2.1, ya que es una relación aproximada para que por el conductor existan los diferentes modos $T_{m}$. Así, para el modo $T_{1}$, que es el que produce radiación axial, tenemos:
+La expresión (3) se relaciona de forma directa con los modos de transmisión comentados en la sección 2.1, ya que es una relación aproximada para que por el conductor se propaguen los diferentes modos $T_{m}$. Así, para el modo $T_{1}$, que es el que produce radiación axial, tenemos:
 
 \begin{equation}
 	\frac{L_{\lambda}}{p}=1+S_{\lambda}\longrightarrow\frac{L}{p}=\lambda+S
@@ -212,17 +195,9 @@ Introduciendo la relación $L²=S²+(\pi D)²$, se obtiene una interrelación en
 	\label{fig:diam_vs_spacing}
 \end{figure}
 
-La factor de velocidad de fase debe estar entre $p=1$ y $p=0,7$ 
-
-
-\newpage
-\bibliographystyle{plain}
-\bibliography{biblist}
+El factor de velocidad de fase debe estar entre $p=1$ y $p=0,7$ 
 \newpage
 
-\printglossary[type=\acronymtype]
 
-\newpage
-\printglossary[type=main]
 
 \end{document}
