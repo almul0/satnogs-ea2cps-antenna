@@ -6,13 +6,9 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 \usepackage{parskip}
+\usepackage{color}
 \usepackage{listings}
 \lstset{
-	backgroundcolor=\color{backcolour},   
-	commentstyle=\color{codegreen},
-	keywordstyle=\color{magenta},
-	numberstyle=\tiny\color{codegray},
-	stringstyle=\color{codepurple},
 	basicstyle=\footnotesize,
 	breakatwhitespace=false,         
 	breaklines=true,                 
@@ -60,18 +56,6 @@
 \setacronymstyle{ex-footnote}
 
 
-
-%Glossary
-\newglossaryentry{vhfg}
-{
-	name=VFH,
-	description={Banda del espectro electromagnético que ocupa el rango de frecuencias de 30 MHz a 300 MHz}
-}
-\newglossaryentry{uhfg}
-{
-	name=UFH,
-	description={Banda del espectro electromagnético que ocupa el rango de frecuencias de 300 MHz a 3 GHz}
-}
 
 % Acronym list
 \newacronym{oscar}{OSCAR}{Orbiting Satellite Carrying Amateur Radio}
@@ -271,17 +255,8 @@ Con estas condiciones de diseño impuestas se procederá a su simulación median
 
 Se empezará simulando la hélice simple sin plano de tierra para una frecuencia de 435 MHz ($\lambda_0 = 68.965cm$)
 
-\begin{lstlisting}
+\begin{lstlisting}[language={}]
 
 \end{lstlisting}
-
-\bibliographystyle{plain}
-\bibliography{biblist}
-\newpage
-
-\printglossary[type=\acronymtype]
-
-\newpage
-\printglossary[type=main]
 
 \end{document}
