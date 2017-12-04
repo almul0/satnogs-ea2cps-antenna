@@ -128,7 +128,7 @@
 Desde su descubrimiento casi accidental, la antena helicoidal operando en modo axial es una de las antenas más usadas para UHF y comunicaciones de microondas. El término axial hace referencia a la tendencia de la antena a radiar en la dirección de su extremo (axialmente), en lugar de lateralmente, cuando su radio es del orden de una longitud de onda.\\\\
 El modo axial radia con polarización circular de forma predominante. En comunicaciones espaciales, así como en comunicaciones móviles terrestres, la orientación relativa entre la transmisión y recepción con polarización lineal no está garantizada, por lo que es necesario utilizar este tipo de polarización. Además, para aplicaciones espaciales, la rotación de Faraday a través de la ionosfera es, generalmente, impredecible (el plasma magnetizado en la ionosfera rota la dirección de la polarización lineal, pero no tiene efecto sobre la polarización circular). Por estas razones, es común que las antenas polarizadas linealmente experimenten desvanecimientos profundos, haciendo las comunicaciones poco fiables.\\\\
 En el presente documento se va a detallar el diseño de una antena helicoidal para realizar un enlace satelital. Su frecuencia central estará en torno a los 435 MHz (UHF) y trabajará en modo axial. Los satélites objetivo son satélites de radio amateur, designados habitualmente como \gls{oscar}, que operan en la banda de UHF y VHF. La motivación de este proyecto viene de la necesidad de construir un seguidor de satélites basado en el proyecto \gls{satnogs}.\\\\
-Para la realización de este trabajo se emplearán las herramientas Matlab y 4nec2.
+Para la realización de este trabajo se empleará el software 4nec2.
 
 \newpage
 \section{Fundamentos teóricos}
@@ -216,25 +216,26 @@ El factor de velocidad de fase debe estar entre $p=1$ y $p=0,7$
 \newpage
 
 \section{Diseño de la antena}
-Los parametros de la antena se obtendrán de las condiciones de diseño del modo axial descritas en la siguiente table:  \ref{table:condiciones_diseno}
+Los parámetros de la antena se obtienen a partir de las condiciones de diseño del modo axial descritas en la siguiente tabla.
 
 \begin{table}[!h]
 \centering
-\begin{tabular}{|c|c|}
+\begin{tabular}{lc}
 	\hline 
-	Parámetro & Valor \\ 
+	\textit{Parámetro} & \textit{Valor} \\ 
 	\hline 
-	Circunferencia & $\frac{3\lambda}{4} < C < \frac{4\lambda}{3}$  \\ 
+	\hline
+	Circunferencia ($\pi D$) & $3\lambda/4 < C < 4\lambda/3$  \\ 
 	\hline 
-	S & $0.19\lambda < p < 0.25\lambda$ \\ 
+	$S$ & $0.19\lambda < p < 0.25\lambda$ \\ 
 	\hline 
-	$ \alpha $ & $ 11 \lambda < \alpha  << 15 \lambda $ \\ 
+	$ \alpha $ & $ 11 \lambda < \alpha  < 15 \lambda $ \\ 
 	\hline 
-	N & $3 < N < 15$  \\ 
+	$n$ & $3 < n < 15$  \\ 
 	\hline 
-	Diámetro del plano de tierra & $D > \frac{\lambda}{2}$ \\ 
+	Diámetro del plano de tierra & $D_{GND} > \lambda/2$ \\ 
 	\hline 
-	Diámetro del conductor (t)	& $ 0.001\lambda < t < 0.01 \lambda$   \\ 
+	Diámetro del conductor ($d$)	& $ 0.001\lambda < d < 0.01 \lambda$   \\ 
 	\hline 
 	Impedancia de entrada & Sensible a la alimentación. Entre 140 y 250 $\Omega$  \\ 
 	\hline 
@@ -243,17 +244,17 @@ Los parametros de la antena se obtendrán de las condiciones de diseño del modo
 \label{table:condiciones_diseno}
 \end{table} 
 
-Para un diseño óptimo $C \simeq \lambda_0$ y $\alpha \simeq 13°$ con estos parámetros fijados se obtiene una separación entre vueltas:
+Para un diseño óptimo: $C \simeq \lambda_0$ y $\alpha \simeq 13°$, siendo $\lambda_0$ la longitud de onda en el vacío. Fijando estos parámetros se obtienen $S$ y $L$:
 \begin{equation}
 S = C \tan{\alpha} = \lambda_0 \tan(13°) = 0.231 \lambda_0 
 \end{equation}
-La longitud de una vuelta entonces seǵun ECUACION O FIGURA DE DIEGO:
 \begin{equation}
-L_0=\sqrt{S^2 + C^2} = \lambda_0 \sqrt{(0.231)^2 + (1)^2} = 1.0263 \lambda_0
+L=\sqrt{S^2 + C^2} = \lambda_0 \sqrt{(0.231)^2 + (1)^2} = 1.0263 \lambda_0
 \end{equation}
-Con estas condiciones de diseño impuestas se procederá a su simulación mediante el software de 4nec2. Dicho software calcula mediante el método de momentos la respuesta electromágnetica de antenas y estructuras metálicas. El software viene con un generador de geometrías que se puede utilizar para generar un archivo .nec con los segmentos del reflector o la hélice, aunque la hélice se puede generar con un tipo especial de hilo en el mismo editor del programa.
 
-Se empezará simulando la hélice simple sin plano de tierra para una frecuencia de 435 MHz ($\lambda_0 = 68.965cm$)
+Con estas condiciones de diseño se procede a su simulación mediante el software 4nec2. Dicho software calcula mediante el método de momentos la respuesta electromágnetica de antenas y estructuras metálicas. El software viene con un generador de geometrías que se puede utilizar para generar un archivo .nec con los segmentos del reflector o la hélice, aunque la hélice se puede generar con un tipo especial de hilo en el mismo editor del programa.
+
+Se empieza simulando una hélice simple sin plano de tierra a una frecuencia de 435 MHz ($\lambda_0 = 68.965cm$)
 
 \begin{lstlisting}[language={}]
 
