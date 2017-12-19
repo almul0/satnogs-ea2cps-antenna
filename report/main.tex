@@ -514,5 +514,40 @@ La polarización se mantiene circular en el haz principal pero se vuelve inestab
 	\caption{Relación axial}
 \end{figure}
 
+\newpage
+A continuación se muestra una tabla con las características de la antena:
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{lc}
+		\hline 
+		Frecuencia [MHz] & $435$ \\ 
+		\hline 
+		Ganancia [dBi] & $12.9$ \\ 
+		\hline 
+		NLPS [dB] & $14 dB$ \\ 
+		\hline 
+		Relación axial [dB] & $0.5442$ \\ 
+		\hline 
+		$Z_{in}$ [$\Omega$] & $145.4 - j1453$ \\ 
+		\hline 
+	\end{tabular} 
+	\caption{Antena con plano de tierra finito}
+\end{table} 
+
+\newpage
+\section{Conclusiones}
+Se ha visto la enorme influencia que tiene un plano de masa infinito en cuanto a radiación de la antena. Al poner un plano de masa finito aparece radiación 'backfire' y las prestaciones de la antena se modifican sustancialmente. 
+
+Se debe tener en cuenta que en la realidad se utilizará un plano de masa finito, por lo que su diseño es necesario.
+
+Independendientemente de los resultados obtenido con el simulador, una vez construida la antena será necesario verificar sus prestaciones con un analizador vectorial de redes. 
+
+\newpage
+\section{Lineas futuras}
+
+Este trabajo se engloba dentro de un proyecto más grande. Se debe diseñar el soporte de la antena y el sistema de fijación al sistema. Además habrá que tener en cuenta donde estará situada la antena a la hora de elegir sus componentes.
+
+Por último queda por calcular la red de adaptación de impedancias de la antena y elegir el método más apropiado. No hay que olvidar que se trata de un diseño de banda ancha por lo que no es válida cualquier solución.
 
 \end{document}
