@@ -506,7 +506,7 @@ Con un simple vistazo al diagrama de radiación puede verse que el efecto del pl
 	\caption{Comparativa entre diagramas de radiación de antenas de 7 vueltas}
 \end{figure}
 
-La polarización se mantiene circular en el haz principal pero se vuelve inestable fuera de él.\\
+La polarización es circular sólo en el haz principal. Esto no supone un problema, ya que la antena va montada en un seguidor y el enlace se hará en la dirección del eje de la misma.\\
 
 \begin{figure}[H]
 	\centering
@@ -515,7 +515,7 @@ La polarización se mantiene circular en el haz principal pero se vuelve inestab
 \end{figure}
 
 \newpage
-A continuación se muestra una tabla con las características de la antena:
+A continuación se muestra una tabla con las características de la antena:\\
 
 \begin{table}[!h]
 	\centering
@@ -535,19 +535,16 @@ A continuación se muestra una tabla con las características de la antena:
 	\caption{Antena con plano de tierra finito}
 \end{table} 
 
+Comparando los cuadros 2 y 3, la antena real presenta mayor ganancia (3 dB más) y mejor NLPS que la antena con plano de tierra infinito. Por contra, la polarización no es tan circular y la impedancia crece.
+
 \newpage
 \section{Conclusiones}
-Se ha visto la enorme influencia que tiene un plano de masa infinito en cuanto a radiación de la antena. Al poner un plano de masa finito aparece radiación 'backfire' y las prestaciones de la antena se modifican sustancialmente. 
+Se ha visto como cambian los parámetros de radiación de la antena cuando cambian sus dimensiones geométricas, número de vueltas, plano de tierra, etc. Pequeñas variaciones de las mismas producen cambios muy significativos, por lo que a la hora de construir la antena será necesario un controlarlas. Por otro lado, se ha confirmado de forma teórica que el ancho de banda para el que los parámetros de radiación son prácticamente constantes es muy  alto.\\\\
+Las características de polarización y ancho de haz hacen que esta antena sea ideal para la aplicación propuesta. Se ha elegido un número de vueltas adecuado para mantener un compromiso entre especificaciones de radiación y tamaño. Si el seguidor en el que va a ir montada se redimensiona para soportar mas peso se recomienda aumentar tanto el número de vueltas como el diámetro del plano de tierra, manteniendo el resto de parámetros. Esto mejorará mucho las características de radiación.\\\\
+Para el control de calidad de la antena serán necesarios un analizador vectorial de redes y una cámara anecoica lo suficientemente grande para que quepa. Hay que recordar que la longitud de la hélice está en torno a 1,3 m.
 
-Se debe tener en cuenta que en la realidad se utilizará un plano de masa finito, por lo que su diseño es necesario.
-
-Independendientemente de los resultados obtenido con el simulador, una vez construida la antena será necesario verificar sus prestaciones con un analizador vectorial de redes. 
-
-\newpage
-\section{Lineas futuras}
-
-Este trabajo se engloba dentro de un proyecto más grande. Se debe diseñar el soporte de la antena y el sistema de fijación al sistema. Además habrá que tener en cuenta donde estará situada la antena a la hora de elegir sus componentes.
-
-Por último queda por calcular la red de adaptación de impedancias de la antena y elegir el método más apropiado. No hay que olvidar que se trata de un diseño de banda ancha por lo que no es válida cualquier solución.
+\subsection{Líneas futuras}
+Este trabajo se engloba dentro de un proyecto más grande. Se debe diseñar el soporte de la antena y el sistema de fijación. Además habrá que tener en cuenta donde estará situada la antena a la hora de elegir sus componentes.\\\\
+Por último, queda calcular la red de adaptación de impedancias, eligiendo el método más apropiado. No hay que olvidar que se trata de un diseño de banda ancha por lo que no es válida cualquier solución. Se propone utilizar una transición tipo taper en línea microstrip. La adaptación progresiva de la impedancia en la misma línea permite no depender de elementos resonantes que limiten el ancho de banda.
 
 \end{document}
