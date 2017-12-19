@@ -457,7 +457,7 @@ En cuanto al resto de parámetros, se sigue teniendo banda ancha.\\
 \end{figure}
 
 \subsubsection*{Conclusiones}
-Las prestaciones mejoran mucho con el número de vueltas, pero una antena de 10 vueltas tiene demasiado tamaño para ser montada en un tracker. Con una separación entre vueltas de 16 cm la longitud total es de 1,6 m. Por ello se opta por el diseño original de 7 vueltas.\\\\
+Las prestaciones mejoran mucho con el número de vueltas, pero una antena de 10 vueltas tiene demasiado tamaño para ser montada en un tracker. Con una separación entre vueltas de 16 cm la longitud total es de 1,6 m. Por ello, se opta por el diseño original de 7 vueltas.\\\\
 Hay que recordar que este diseño no es real, puesto que tiene un plano de tierra infinito. en la siguiente sección se visualizará el efecto de reducir el plano a dimensiones finitas.\\\\
 Para concluir, en el Cuadro 2 se hace un resumen de las prestaciones de la antena de 7 vueltas a la frecuencia de diseño.\\
 
@@ -481,21 +481,38 @@ Para concluir, en el Cuadro 2 se hace un resumen de las prestaciones de la anten
 \newpage
 
 \subsection{Antena con plano de tierra finito}
+Sólo se va a ver el efecto del plano a la frecuencia de diseño en la antena de 7 vueltas. Parte de la radiación saldrá hacia atrás debido a la difracción en los bordes del plano. No se estudiará el efecto del plano sobre el ancho de banda, que se considerará invariante en el rango de frecuencias estudiado hasta este punto. Los siguientes resultados se obtienen con un plano de tierra de diámetro $0,8\lambda$. Este se genera con la herramienta Geometry Builder de \textit{4nec2}. El archivo que se crea se añade al \textit{.nec} de la antena.
 
-%\begin{figure}[!h]
-%	\centering
-%	\includegraphics[width=0.4\textwidth]{diametro_espaciado.png}
-%	\caption{Diámetro vs espaciado}
-%	\label{fig:diam_vs_spacing}
-%\end{figure}
-%
-%\begin{figure}[!h]
-%	\centering
-%	\includegraphics[width=0.4\textwidth]{diametro_espaciado.png}
-%	\caption{Diámetro vs espaciado}
-%	\label{fig:diam_vs_spacing}
-%\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{antena_planotierra.png}
+	\caption{Estructura con plano de tierra en \textit{4nec2}}
+\end{figure}
 
+Con un simple vistazo al diagrama de radiación puede verse que el efecto del plano de tierra tiene una gran influencia en los parámetros de la antena. El haz se estrecha y aparecen lóbulos en la dirección backfire. La directividad aumenta de 10,1 a 12,9 dBi. El NLPS mejora a 14 dB (antes 6,5 dB). En términos generales, la radiación se concentra más en el eje de la antena.\\
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{gp_rad_435.png}
+		\caption{Plano de tierra finito}
+	\end{subfigure}%
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{helix_1_435.png}
+		\caption{Plano de tierra infinito}
+	\end{subfigure}
+	\caption{Comparativa entre diagramas de radiación de antenas de 7 vueltas}
+\end{figure}
+
+La polarización se mantiene circular en el haz principal pero se vuelve inestable fuera de él.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{helix_2_F435_AR.png}
+	\caption{Relación axial}
+\end{figure}
 
 
 \end{document}
